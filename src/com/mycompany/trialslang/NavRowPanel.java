@@ -29,10 +29,10 @@ public class NavRowPanel extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
-        jButton1.setText("jButton1");
+        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\jafet\\OneDrive\\Documents\\NetBeansProjects\\ThoughtWrite\\icons\\right-arrow.png")); // NOI18N
         jButton1.addActionListener(this::jButton1ActionPerformed);
 
-        jButton2.setText("jButton1");
+        jButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\jafet\\OneDrive\\Documents\\NetBeansProjects\\ThoughtWrite\\icons\\left-arrow.png")); // NOI18N
         jButton2.addActionListener(this::jButton2ActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -52,7 +52,7 @@ public class NavRowPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
