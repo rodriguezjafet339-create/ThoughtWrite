@@ -32,8 +32,13 @@ public class PageCardPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
 
+        setBackground(new java.awt.Color(255, 255, 204));
+
         jLabel1.setFont(new java.awt.Font("Courier New", 2, 14)); // NOI18N
         jLabel1.setText("0.0.0");
+
+        jSeparator2.setBackground(new java.awt.Color(255, 204, 102));
+        jSeparator2.setForeground(new java.awt.Color(255, 204, 102));
 
         jTextArea1.setColumns(20);
         jTextArea1.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N

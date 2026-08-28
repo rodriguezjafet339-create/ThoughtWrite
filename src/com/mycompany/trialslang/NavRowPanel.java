@@ -29,9 +29,13 @@ public class NavRowPanel extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 204));
+
+        jButton1.setBackground(new java.awt.Color(255, 204, 102));
         jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\jafet\\OneDrive\\Documents\\NetBeansProjects\\ThoughtWrite\\icons\\right-arrow.png")); // NOI18N
         jButton1.addActionListener(this::jButton1ActionPerformed);
 
+        jButton2.setBackground(new java.awt.Color(255, 204, 102));
         jButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\jafet\\OneDrive\\Documents\\NetBeansProjects\\ThoughtWrite\\icons\\left-arrow.png")); // NOI18N
         jButton2.addActionListener(this::jButton2ActionPerformed);
 

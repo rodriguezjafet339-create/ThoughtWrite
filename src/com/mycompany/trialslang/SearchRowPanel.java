@@ -30,8 +30,12 @@ public class SearchRowPanel extends javax.swing.JPanel {
         jComboBox1 = new javax.swing.JComboBox<>();
         jTextField2 = new javax.swing.JTextField();
 
+        setBackground(new java.awt.Color(255, 255, 204));
+
+        jButton1.setBackground(new java.awt.Color(255, 204, 204));
         jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\jafet\\OneDrive\\Documents\\NetBeansProjects\\ThoughtWrite\\icons\\trash_icon (1).png")); // NOI18N
 
+        jComboBox1.setBackground(new java.awt.Color(255, 204, 102));
         jComboBox1.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
