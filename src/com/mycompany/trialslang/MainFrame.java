@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package com.mycompany.trialslang;
 
 /**
@@ -19,10 +15,19 @@ public class MainFrame extends javax.swing.JFrame {
         initComponents();
         
         setTitle("ThoughtWrite");
-        setContentPane(new NoteBookPanel());
+        NoteBookPanel notebook = new NoteBookPanel();
+        setContentPane(notebook);
         setSize(480, 640);
         setResizable(false);
         setLocationRelativeTo(null);
+
+        // Flush any pending autosave before the app exits.
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent e) {
+                notebook.flush();
+            }
+        });
     }
 
     /**
@@ -56,9 +61,6 @@ public class MainFrame extends javax.swing.JFrame {
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {

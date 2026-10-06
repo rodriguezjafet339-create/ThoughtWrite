@@ -1,8 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package com.mycompany.trialslang;
+
+import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.IntConsumer;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -10,12 +12,52 @@ package com.mycompany.trialslang;
  */
 public class SearchRowPanel extends javax.swing.JPanel {
 
+    private boolean updating;   // true while the combo model is being rebuilt
+
     /**
      * Creates new form NotebookPanel
      */
     public SearchRowPanel() {
         initComponents();
+        jTextField2.setText("");
+        jTextField2.setToolTipText("Search your entries");
+        jButton1.setToolTipText("Tear out this page");
+        setJumpItems(java.util.Collections.emptyList());
     }
+
+    // ---- Logic hooks used by NoteBookPanel ----
+
+    public String getQuery() { return jTextField2.getText(); }
+
+    /** Live search: fires on every keystroke. */
+    public void addSearchListener(Consumer<String> l) {
+        jTextField2.getDocument().addDocumentListener(DocUtil.of(() -> l.accept(jTextField2.getText())));
+    }
+
+    /** Rebuilds the "Jump to…" dropdown. Item 0 is always the prompt; labels start at item 1. */
+    public void setJumpItems(List<String> labels) {
+        updating = true;
+        try {
+            DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
+            model.addElement("Jump to\u2026");
+            labels.forEach(model::addElement);
+            jComboBox1.setModel(model);
+            jComboBox1.setSelectedIndex(0);
+        } finally {
+            updating = false;
+        }
+    }
+
+    /** Called with the 0-based position of the chosen date (prompt row excluded). */
+    public void addJumpListener(IntConsumer l) {
+        jComboBox1.addActionListener(e -> {
+            if (updating) return;
+            int i = jComboBox1.getSelectedIndex();
+            if (i > 0) SwingUtilities.invokeLater(() -> l.accept(i - 1));
+        });
+    }
+
+    public void addDeleteListener(Runnable r) { jButton1.addActionListener(e -> r.run()); }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -71,7 +113,7 @@ public class SearchRowPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
+        // Search is live (see addSearchListener); Enter needs no extra handling.
     }//GEN-LAST:event_jTextField2ActionPerformed
 
 

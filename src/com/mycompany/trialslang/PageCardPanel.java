@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package com.mycompany.trialslang;
 
 /**
@@ -10,11 +6,45 @@ package com.mycompany.trialslang;
  */
 public class PageCardPanel extends javax.swing.JPanel {
 
+    private boolean loading;   // true while setText() is programmatically filling the page
+
     /**
      * Creates new form PageCardPanel
      */
     public PageCardPanel() {
         initComponents();
+        jLabel1.setText("");
+        jTextArea1.setLineWrap(true);
+        jTextArea1.setWrapStyleWord(true);
+        jTextArea1.setMargin(new java.awt.Insets(6, 8, 6, 8));
+    }
+
+    // ---- Logic hooks used by NoteBookPanel ----
+
+    public void setDateline(String dateline) { jLabel1.setText(dateline); }
+
+    public String getText() { return jTextArea1.getText(); }
+
+    /** Fills the page without triggering the change listener (so it won't autosave). */
+    public void setText(String text) {
+        loading = true;
+        try {
+            jTextArea1.setText(text);
+            jTextArea1.setCaretPosition(0);
+        } finally {
+            loading = false;
+        }
+    }
+
+    public void setEditable(boolean editable) { jTextArea1.setEditable(editable); }
+
+    public void focusText() { jTextArea1.requestFocusInWindow(); }
+
+    /** Fires on every user edit (typing, paste, delete). */
+    public void addTextChangeListener(Runnable r) {
+        jTextArea1.getDocument().addDocumentListener(DocUtil.of(() -> {
+            if (!loading) r.run();
+        }));
     }
 
     /**
@@ -39,6 +69,8 @@ public class PageCardPanel extends javax.swing.JPanel {
 
         jSeparator2.setBackground(new java.awt.Color(255, 204, 102));
         jSeparator2.setForeground(new java.awt.Color(255, 204, 102));
+
+        jScrollPane1.setBackground(new java.awt.Color(255, 204, 102));
 
         jTextArea1.setColumns(20);
         jTextArea1.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N

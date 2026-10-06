@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package com.mycompany.trialslang;
 
 /**
@@ -15,7 +11,16 @@ public class NavRowPanel extends javax.swing.JPanel {
      */
     public NavRowPanel() {
         initComponents();
+        jButton2.setToolTipText("Previous page");
+        jButton1.setToolTipText("Next page");
     }
+
+    // ---- Logic hooks used by NoteBookPanel (jButton2 = left, jButton1 = right) ----
+
+    public void setOnPrev(Runnable r) { jButton2.addActionListener(e -> r.run()); }
+    public void setOnNext(Runnable r) { jButton1.addActionListener(e -> r.run()); }
+    public void setPrevEnabled(boolean enabled) { jButton2.setEnabled(enabled); }
+    public void setNextEnabled(boolean enabled) { jButton1.setEnabled(enabled); }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -61,11 +66,11 @@ public class NavRowPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        // Handled via setOnNext(...)
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        // Handled via setOnPrev(...)
     }//GEN-LAST:event_jButton2ActionPerformed
 
 
