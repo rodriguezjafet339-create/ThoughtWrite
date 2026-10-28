@@ -1,2 +1,50 @@
-entries/
+# Compiled output
+*.class
+build/
+dist/
+target/
+out/
+bin/
+
+# Packaged files
+*.jar
+*.war
+*.ear
+
+# NetBeans
 nbproject/private/
+nbbuild/
+nbdist/
+nbactions.xml
+nb-configuration.xml
+
+# Gradle
+.gradle/
+gradle-app.setting
+
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# VS Code
+.vscode/
+
+# Logs and temp files
+*.log
+*.tmp
+*.bak
+hs_err_pid*
+
+# OS files
+Thumbs.db
+.DS_Store
+Desktop.ini
+
+# Secrets and local config (adjust to your file names)
+config.properties
+*.env
