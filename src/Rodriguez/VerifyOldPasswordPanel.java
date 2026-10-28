@@ -64,7 +64,9 @@ public class VerifyOldPasswordPanel extends JPanel {
         JButton continueButton = new JButton("Continue");
         JButton cancelButton = new JButton("Cancel");
         cancelButton.setBackground(new Color(255, 204, 204));
+        cancelButton.setFont(new Font("Courier New", Font.PLAIN, 12));
         continueButton.setBackground(new Color(255, 255, 153));
+        continueButton.setFont(new Font("Courier New", Font.PLAIN, 12));
         continueButton.addActionListener(e -> submit());
         passwordField.addActionListener(e -> submit());
         cancelButton.addActionListener(e -> {

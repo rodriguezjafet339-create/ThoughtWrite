@@ -48,6 +48,7 @@ public class NoteBookPanel extends javax.swing.JPanel {
         // wiring
         pageCard.addTextChangeListener(saveTimer::restart);          // debounced autosave
         searchRow.addSearchListener(this::applyFilter);
+        //searchRow.addClearListener();
         searchRow.addJumpListener(i -> goTo(jumpTargets.get(i)));
         searchRow.addDeleteListener(this::deletePage);
         navRow.setOnPrev(this::prevPage);

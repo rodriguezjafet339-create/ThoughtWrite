@@ -53,8 +53,8 @@ public class MainFrame extends javax.swing.JFrame {
         lockScreen = new LockScreen(auth, this::showMain);
 
         cover.setBackground(PAPER);
-        cover.add(centered(firstRun), COVER_FIRST_RUN);
-        cover.add(centered(firstRunCreate), COVER_CREATE);
+        cover.add(firstRun, COVER_FIRST_RUN);
+        cover.add(firstRunCreate, COVER_CREATE);
         cover.add(centered(lockScreen), COVER_LOCK);
         root.add(cover, CARD_COVER);
 
@@ -228,6 +228,7 @@ public class MainFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 204));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
